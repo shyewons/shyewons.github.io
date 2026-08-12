@@ -6,3 +6,12 @@ dist/
 .env
 .env.*
 !.env.example
+
+# Local planning and agent instruction files
+AGENTS.md
+**/AGENTS.md
+.agents/
+.codex/
+*기획서*.md
+*작업지시*.md
+*에이전트지시*.md
