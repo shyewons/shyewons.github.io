@@ -1,0 +1,44 @@
+---
+import { site } from '../data/site';
+import '../styles/global.css';
+
+interface Props { title?: string; description?: string; }
+const { title = site.title, description = site.description } = Astro.props;
+const pageTitle = title === site.title ? title : `${title} | ${site.name}`;
+const path = Astro.url.pathname;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const nav = [
+  { href: '/', label: 'Home' },
+  { href: '/about/', label: 'About' },
+  { href: '/projects/', label: 'Projects' },
+  { href: '/notes/', label: 'Dev Notes' },
+];
+---
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href={`${base}/favicon.svg`} type="image/svg+xml" />
+    <link rel="alternate" type="application/rss+xml" title="Dev Notes RSS" href={`${base}/rss.xml`} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href={`${base}/`} aria-label="홈으로">SY.</a>
+      <nav aria-label="주요 메뉴">
+        {nav.map(({ href, label }) => <a class:list={{ active: path === `${base}${href}` || (href !== '/' && path.startsWith(`${base}${href}`)) }} href={`${base}${href}`}>{label}</a>)}
+      </nav>
+    </header>
+    <main><slot /></main>
+    <footer>
+      <span>© {new Date().getFullYear()} {site.name}</span>
+      <a href={site.github} target="_blank" rel="noreferrer">GitHub ↗</a>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+const projects = await getCollection('projects', ({ data }) => !data.draft);
+---
+<BaseLayout title="Projects" description="문제 발견부터 구현, 결과와 회고까지 담은 프로젝트">
+  <section class="page-hero section"><p class="eyebrow">PROJECTS</p><h1>만든 기능보다<br />판단의 과정을 보여줍니다.</h1><p>프로젝트의 목적, 직접 담당한 범위, 기술적 선택과 문제 해결 과정을 기록합니다.</p></section>
+  <section class="section">{projects.length ? <div class="card-grid">{projects.map((project) => <ProjectCard project={project} />)}</div> : <div class="empty"><h2>프로젝트 콘텐츠 작성 예정</h2><p>확인된 프로젝트 정보가 추가되면 이 페이지에 공개됩니다.</p></div>}</section>
+</BaseLayout>

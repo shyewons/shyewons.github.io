@@ -1,0 +1,14 @@
+---
+import { getCollection, render } from 'astro:content';
+import ContentLayout from '../../layouts/ContentLayout.astro';
+export async function getStaticPaths() {
+  const entries = await getCollection('projects', ({ data }) => !data.draft);
+  return entries.map((entry) => ({ params: { id: entry.id }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+<ContentLayout title={entry.data.title} description={entry.data.description} eyebrow={`${entry.data.period} · ${entry.data.type}`}>
+  <ul class="tags">{entry.data.stack.map((item: string) => <li>{item}</li>)}</ul>
+  <Content />
+</ContentLayout>

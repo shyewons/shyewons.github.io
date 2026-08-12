@@ -1,0 +1,11 @@
+---
+const { note } = Astro.props;
+const { title, description, publishedAt, category, tags } = note.data;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<article class="note-row">
+  <div class="note-meta"><span>{category}</span><time datetime={publishedAt.toISOString()}>{publishedAt.toLocaleDateString('ko-KR')}</time></div>
+  <h3><a href={`${base}/notes/${note.id}/`}>{title}</a></h3>
+  <p>{description}</p>
+  <ul class="tags">{tags.map((tag: string) => <li>{tag}</li>)}</ul>
+</article>

@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { skills, site } from '../data/site';
+---
+<BaseLayout title="About" description="개발자로서의 방향과 현재 가능한 작업 범위">
+  <section class="page-hero section"><p class="eyebrow">ABOUT</p><h1>사용자에게 보이는 화면에서<br />서비스가 동작하는 환경까지.</h1><p>{site.description}</p></section>
+  <section class="section about-grid">
+    <div><h2>방향</h2></div>
+    <div><p>UI 구현 경험을 기반으로 외부 API와 데이터를 실제 기능에 연결하고, 백엔드와 서버 운영까지 서비스의 전체 흐름을 이해하는 개발자로 성장하고 있습니다.</p><p>기술 이름을 나열하기보다 어떤 문제를 발견했고, 왜 그 방법을 선택했으며, 결과가 어떻게 달라졌는지를 작업과 기록으로 보여주고자 합니다.</p></div>
+  </section>
+  <section class="section"><p class="eyebrow">SKILLS</p><h2>현재 가능한 작업 범위</h2><div class="skills-grid">{skills.map(({ group, items }, index) => <article class="skill-card"><span>0{index + 1}</span><h3>{group}</h3><ul>{items.map((item) => <li>{item}</li>)}</ul></article>)}</div></section>
+  <section class="section contact"><p class="eyebrow">CONTACT</p><h2>함께 이야기해요.</h2><a class="button primary" href={site.github}>GitHub 방문하기 ↗</a></section>
+</BaseLayout>
