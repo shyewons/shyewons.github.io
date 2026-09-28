@@ -1,4 +1,4 @@
-# dev-portfolio
+# shyewons.github.io
 
 Astro로 만든 개발자 포트폴리오입니다. 콘텐츠는 Markdown/MDX 기반으로 관리합니다.
 
@@ -21,4 +21,4 @@ npm run dev
 
 ## GitHub Pages
 
-기본 배포 주소는 `https://shyewons.github.io/dev-portfolio`로 설정되어 있습니다. 사용자 정의 도메인이나 저장소 이름을 변경하면 `astro.config.mjs`의 `site`와 `base`도 함께 수정하세요.
+저장소는 `shyewons/shyewons.github.io`이며, 배포 주소는 `https://shyewons.github.io/`입니다. 사용자 사이트이므로 `astro.config.mjs`의 `site`는 `https://shyewons.github.io`, `base`는 `/`로 설정합니다. `public/`의 이미지는 `/images/...` 경로로 참조합니다.

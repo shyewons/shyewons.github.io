@@ -101,7 +101,7 @@ router.post('/write', async (req, res) => {
 });
 ```
 
-![게시글 작성 API 요청과 JSON 응답](/dev-portfolio/images/notes/board-project/write-api-response.png)
+![게시글 작성 API 요청과 JSON 응답](/images/notes/board-project/write-api-response.png)
 
 이 과정에서 `req`는 클라이언트가 서버로 보낸 요청 정보이고, `res`는 서버가 클라이언트로 보낼 응답이라는 점이 분명해졌다.
 
@@ -138,7 +138,7 @@ app.use('/board', (req, res, next) => {
 
 JWT 검증 과정에서는 `jsonwebtoken`을 불러오지 않아 `jwt is not defined` 오류도 만났다. 토큰의 이동 경로를 프론트, 요청 헤더, 서버의 `req.headers.authorization`, `jwt.verify()` 순으로 확인하면서 원인을 찾았다.
 
-![JWT 검증 과정에서 만난 jwt is not defined 오류](/dev-portfolio/images/notes/board-project/jwt-debug-error.png)
+![JWT 검증 과정에서 만난 jwt is not defined 오류](/images/notes/board-project/jwt-debug-error.png)
 
 JWT payload에는 비밀번호 같은 민감한 값을 넣지 않고 필요한 식별 정보만 담는 방향이 맞다는 점도 리팩터링 항목으로 남겼다.
 
@@ -178,7 +178,7 @@ router.post('/write', upload.none(), async (req, res) => {
 
 게시글이 MongoDB에 저장된 결과도 직접 확인했다.
 
-![MongoDB에 저장된 테스트 게시글](/dev-portfolio/images/notes/board-project/mongodb-saved-document.png)
+![MongoDB에 저장된 테스트 게시글](/images/notes/board-project/mongodb-saved-document.png)
 
 ## 8. 가장 많이 사용한 도구는 `console.log`였다
 
